@@ -1,0 +1,15 @@
+requests
+pyglet
+geoplotlib
+bokeh
+ipywidgets
+gmaps
+scikit-image
+pandas
+scikit-learn
+jupyter
+tensorflow-gpu==1.0.0
+keras
+matplotlib
+h5py
+Pillow

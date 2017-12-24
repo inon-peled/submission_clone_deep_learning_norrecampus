@@ -1,0 +1,9 @@
+corr_speed   NaN
+mae_speed    NaN
+r2_speed     NaN
+rmse_speed   NaN
+corr_flow    NaN
+mae_flow     NaN
+r2_flow      NaN
+rmse_flow    NaN
+dtype: float64

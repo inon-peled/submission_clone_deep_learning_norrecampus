@@ -1,0 +1,9 @@
+corr_speed    0.791228
+mae_speed     3.837009
+r2_speed      0.620140
+rmse_speed    6.384962
+corr_flow     0.926071
+mae_flow      0.534674
+r2_flow       0.855139
+rmse_flow     0.716177
+dtype: float64

@@ -1,0 +1,17 @@
+code/res
+data/
+figs/
+*.pyc
+*.csv
+data
+norrecampus
+filipe_places
+filipe-deep-norrecampus
+places_no_duplicates.csv
+*.hdf5
+*.html
+.ipynb_checkpoints/
+__pycache__/
+output/
+env/
+.idea/
