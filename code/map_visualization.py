@@ -52,6 +52,21 @@ def one_place_since_2015(place_id):
         .agg(['mean', 'std'])
 
 
+def draw_for_submission():
+    norrecampus_center = 55.697731, 12.558122
+    gmap = gmplot.GoogleMapPlotter(*norrecampus_center, 14)
+    avg_speed = get_avgs(get_all_place_ids())['speed_mean']
+    unified = pd.merge(pd.DataFrame(avg_speed), get_lat_lng_no_duplicates(), 
+                       left_index=True, right_index=True, how='inner').reset_index()
+    for row in map(lambda r: r[1], unified.iterrows()):
+        gmap.circle(row.lat, row.lng, 5,
+                    rgb(min(unified['mean']), max(unified['mean']), row['mean']),ew=2)
+    for row in map(lambda r: r[1], get_lat_lng_no_duplicates()\
+                   [lambda df: df.index.isin(selected_junctions + selected_middle_of_roads)].iterrows()):
+        gmap.marker(row.lat, row.lng, color='red' if row.name in selected_middle_of_roads else 'yellow')
+    gmap.draw('submission.html')
+
+    
 def draw_just_location_on_map(places, places_type, radius, show_place_ids):
     norrecampus_center = 55.697731, 12.558122
     gmap = gmplot.GoogleMapPlotter(*norrecampus_center, 14)
@@ -78,9 +93,11 @@ def draw_stat_on_map(places, places_type, stat_name, data_feature, radius):
 # TODO: Add legends
 
 if __name__ == '__main__':
-    draw_just_location_on_map(selected_junctions + selected_middle_of_roads, 'middle_and_junction', 5, False)
-    draw_just_location_on_map(selected_junctions, 'junction', 5, True)
-    draw_just_location_on_map(selected_middle_of_roads, 'middle', 5, True)
+    draw_for_submission()
+    
+    # draw_just_location_on_map(selected_junctions + selected_middle_of_roads, 'middle_and_junction', 5, False)
+    # draw_just_location_on_map(selected_junctions, 'junction', 5, True)
+    # draw_just_location_on_map(selected_middle_of_roads, 'middle', 5, True)
     # draw_stat_on_map(selected_middle_of_roads, 'middle', 'mean', 'speed_mean', 20)
 
     # print(get_avgs(selected_middle_of_roads).reset_index().mean())
