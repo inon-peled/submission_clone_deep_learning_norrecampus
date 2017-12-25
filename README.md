@@ -1,7 +1,7 @@
 # Deep Learning for Traffic Prediction
 ## Project Code, 02465 Deep Learning, DTU
 
-The different models -- baseline and neural networks -- are available as
+All models are available as
 Python modules in directory "code".
 
 Jupyter notebook **main_results.ipynb** recreates some main
